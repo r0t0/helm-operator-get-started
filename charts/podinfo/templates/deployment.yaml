@@ -39,6 +39,9 @@ spec:
           command:
             - ./podinfo
             - --port={{ .Values.service.httpPort | default 9898 }}
+            {{- if .Values.service.metricsPort }}
+            - --port-metrics={{ .Values.service.metricsPort }}
+            {{- end }}
             {{- if .Values.service.grpcPort }}
             - --grpc-port={{ .Values.service.grpcPort }}
             {{- end }}
